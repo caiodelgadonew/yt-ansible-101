@@ -1,0 +1,12 @@
+- name: Instalando uma lista de pacotes para maquina Centos
+  hosts: centos
+  vars:
+   - packages:
+       - wget
+       - vim
+       - tree
+  tasks:
+    - name: Instalando pacotes
+      become: true
+      yum:
+        name: "{{ packages }}"
