@@ -1,0 +1,12 @@
+# Playbook para transferir arquivos
+
+
+- name: Playbook de Transferir Arquivos
+  hosts: all
+  tasks:
+
+  - name: Atualizar o arquivo resolv.conf
+    become: true
+    copy:
+      src: resolv.conf
+      dest: /etc/resolv.conf

@@ -1,0 +1,14 @@
+- name: Instalando uma lista de pacotes no debian
+  hosts: debian
+  tasks:
+    - name: instalando pacotes
+      become: true
+      apt:
+        name: "{{ item }}"
+      loop:
+        - sl
+        - ncdu
+        - wget
+        - git
+        - vim
+        - jq
