@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   machines.each do |name, conf|
     config.vm.define "#{name}" do |machine|
       machine.vm.box = "#{conf["image"]}"
-      machine.vm.hostname = "#{name}.caiodelgado.dev"
+      machine.vm.hostname = "#{name}.caiodelgado.example"
       machine.vm.network "private_network", ip: "10.10.10.#{conf["ip"]}"
       machine.vm.provider "virtualbox" do |vb|
         vb.name = "#{name}"
@@ -23,9 +23,9 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", inline: <<-EOF
       HOSTS=$(head -n7 /etc/hosts)
       echo -e "$HOSTS" > /etc/hosts
-      echo '10.10.10.30 ansible.caiodelgado.dev' >> /etc/hosts
-      echo '10.10.10.31 machine01.caiodelgado.dev' >> /etc/hosts
-      echo '10.10.10.32 machine02.caiodelgado.dev' >> /etc/hosts
+      echo '10.10.10.30 ansible.caiodelgado.example' >> /etc/hosts
+      echo '10.10.10.31 machine01.caiodelgado.example' >> /etc/hosts
+      echo '10.10.10.32 machine02.caiodelgado.example' >> /etc/hosts
       EOF
     end
   end
